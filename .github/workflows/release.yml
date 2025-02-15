@@ -11,7 +11,7 @@ jobs:
     env:
       ELECTRON_BUILDER_HTTP_TIMEOUT: 6000000
       ELECTRON_MIRROR: "https://npmmirror.com/mirrors/electron/"
-      GH_TOKEN: ${{ secrets.TOKEN }}
+      GH_TOKEN: ${{ secrets.REPO_TOKEN }}
     strategy:
       matrix:
         # macos-13 is an intel runner, macos-14(macos-latest) is apple silicon
@@ -32,7 +32,7 @@ jobs:
         with:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
@@ -45,7 +45,7 @@ jobs:
           args: "--x64"
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}
 
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
@@ -58,7 +58,7 @@ jobs:
           args: "--arm64"
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}
 
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
